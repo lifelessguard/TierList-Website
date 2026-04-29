@@ -13,7 +13,7 @@ const REGION_FULL = {
   AF:  'Africa',
 };
 
-const GAMEMODE_ORDER = ['cart', 'uhc', 'dia_pot', 'neth_pot', 'sword', 'axe', 'dia_smp', 'neth_smp', 'mace', 'spear_mace'];
+const GAMEMODE_ORDER = ['vanilla', 'cart', 'uhc', 'dia_pot', 'neth_pot', 'sword', 'axe', 'dia_smp', 'neth_smp', 'mace', 'spear_mace', 'ely_spear'];
 
 export default function PlayerProfileModal({ player, open, onOpenChange, rank }) {
   if (!player) return null;

@@ -4,7 +4,7 @@ import { createPageUrl } from '@/utils';
 import { Search, ChevronDown, Menu, X, ExternalLink } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { useQuery } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import { SiteSettings } from '@/api/supabaseClient';
 
 const ICONS = {
   rankings: 'https://media.base44.com/images/public/69c6b9c596f69bd520924ef9/d1b88660a_rankings.png',
@@ -19,7 +19,7 @@ export default function Navbar({ searchQuery, onSearchChange }) {
 
   const { data: settingsList } = useQuery({
     queryKey: ['site_settings'],
-    queryFn: () => base44.entities.SiteSettings.list(),
+    queryFn: () => SiteSettings.list(),
     initialData: [],
   });
 

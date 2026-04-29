@@ -13,6 +13,7 @@ const GAMEMODES = [
   { id: 'neth_smp', name: 'SMP' },
   { id: 'mace', name: 'Mace' },
   { id: 'spear_mace', name: 'Spear Mace' },
+  { id: 'ely_spear', name: 'Ely Mace' },
 ];
 
 export { GAMEMODES };
@@ -30,6 +31,7 @@ const GAMEMODE_ICONS = {
   vanilla: 'https://media.base44.com/images/public/69c6b9c596f69bd520924ef9/a4ffd93c1_vanilla1.png',
   mace: 'https://mctiers.com/tier_icons/mace.svg',
   spear_mace: 'https://media.base44.com/images/public/69c694fceabd90a23b1873c9/b6e3289ce_Untitled4x.png',
+  ely_spear: 'https://media.base44.com/images/public/69c694fceabd90a23b1873c9/691405e51_image.png',
 };
 
 export { GAMEMODE_ICONS };

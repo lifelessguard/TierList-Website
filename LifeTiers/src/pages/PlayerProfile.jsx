@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import { Player } from '@/api/supabaseClient';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import TierIcon, { calculateTotalPoints, getTierPoints, TIER_CONFIG } from '../components/tier/TierIcon';
@@ -25,8 +25,8 @@ export default function PlayerProfile() {
   const { data: player, isLoading } = useQuery({
     queryKey: ['player', playerId],
     queryFn: async () => {
-      const players = await base44.entities.Player.filter({ id: playerId });
-      return players[0];
+      const player = await Player.get(playerId);
+      return player;
     },
     enabled: !!playerId,
   });

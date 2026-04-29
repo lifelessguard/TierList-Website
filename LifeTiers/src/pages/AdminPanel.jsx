@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import { Player, Admin, SiteSettings } from '@/api/supabaseClient';
 import { createPageUrl } from '@/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Shield, Plus, Trash2, Edit2, LogOut, Users, User, ChevronUp, ChevronDown, Settings, Save } from 'lucide-react';
+import { Shield, Plus, Trash2, CreditCard as Edit2, LogOut, Users, User, ChevronUp, ChevronDown, Settings, Save } from 'lucide-react';
 import { toast } from 'sonner';
 import {
   Dialog,
@@ -23,8 +23,8 @@ import {
 import TierSelector from '../components/admin/TierSelector';
 
 const GAMEMODES = [
-  'cart', 'uhc', 'dia_pot', 'neth_pot',
-  'sword', 'axe', 'dia_smp', 'neth_smp', 'mace', 'spear_mace'
+  'vanilla', 'cart', 'uhc', 'dia_pot', 'neth_pot',
+  'sword', 'axe', 'dia_smp', 'neth_smp', 'mace', 'spear_mace', 'ely_spear'
 ];
 
 const TIERS = ['HT1', 'LT1', 'HT2', 'LT2', 'HT3', 'LT3', 'HT4', 'LT4', 'HT5', 'LT5'];
@@ -137,7 +137,7 @@ function PlayersManager() {
   const { data: players, isLoading } = useQuery({
     queryKey: ['players'],
     queryFn: async () => {
-      const allPlayers = await base44.entities.Player.list();
+      const allPlayers = await Player.list();
       return allPlayers.map(player => ({
         ...player,
         totalPoints: calculatePlayerPoints(player.tiers || {})
@@ -167,7 +167,7 @@ function PlayersManager() {
   };
 
   const deleteMutation = useMutation({
-    mutationFn: (id) => base44.entities.Player.delete(id),
+    mutationFn: (id) => Player.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['players'] });
       toast.success('Player deleted');
@@ -175,7 +175,7 @@ function PlayersManager() {
   });
 
   const createMutation = useMutation({
-    mutationFn: (data) => base44.entities.Player.create(data),
+    mutationFn: (data) => Player.create(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['players'] });
       setIsDialogOpen(false);
@@ -184,7 +184,7 @@ function PlayersManager() {
   });
 
   const updateMutation = useMutation({
-    mutationFn: ({ id, data }) => base44.entities.Player.update(id, data),
+    mutationFn: ({ id, data }) => Player.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['players'] });
       setIsDialogOpen(false);
@@ -371,7 +371,7 @@ function DiscordSettingsManager() {
 
   const { data: settingsList, isLoading } = useQuery({
     queryKey: ['site_settings'],
-    queryFn: () => base44.entities.SiteSettings.list(),
+    queryFn: () => SiteSettings.list(),
     initialData: [],
   });
 
@@ -395,8 +395,8 @@ function DiscordSettingsManager() {
 
   const saveMutation = useMutation({
     mutationFn: async (data) => {
-      if (existing) return base44.entities.SiteSettings.update(existing.id, data);
-      return base44.entities.SiteSettings.create(data);
+      if (existing) return SiteSettings.update(existing.id, data);
+      return SiteSettings.create(data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['site_settings'] });
@@ -459,7 +459,7 @@ function SiteSettingsManager() {
 
   const { data: settingsList, isLoading } = useQuery({
     queryKey: ['site_settings'],
-    queryFn: () => base44.entities.SiteSettings.list(),
+    queryFn: () => SiteSettings.list(),
     initialData: [],
   });
 
@@ -488,9 +488,9 @@ function SiteSettingsManager() {
   const saveMutation = useMutation({
     mutationFn: async (data) => {
       if (existing) {
-        return base44.entities.SiteSettings.update(existing.id, data);
+        return SiteSettings.update(existing.id, data);
       } else {
-        return base44.entities.SiteSettings.create(data);
+        return SiteSettings.create(data);
       }
     },
     onSuccess: () => {
@@ -562,12 +562,12 @@ function AdminsManager({ currentAdmin }) {
 
   const { data: admins, isLoading } = useQuery({
     queryKey: ['admins'],
-    queryFn: () => base44.entities.Admin.list(),
+    queryFn: () => Admin.list(),
     initialData: [],
   });
 
   const createMutation = useMutation({
-    mutationFn: (data) => base44.entities.Admin.create(data),
+    mutationFn: (data) => Admin.create(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admins'] });
       setIsDialogOpen(false);
@@ -577,7 +577,7 @@ function AdminsManager({ currentAdmin }) {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: (id) => base44.entities.Admin.delete(id),
+    mutationFn: (id) => Admin.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admins'] });
       toast.success('Admin deleted');

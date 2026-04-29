@@ -23,7 +23,7 @@ export default function Home() {
     },
     {
       icon: Swords,
-      title: '11 Gamemodes',
+      title: '12 Gamemodes',
       description: 'From Dia SMP to UHC, prove yourself in every style of combat',
       color: 'from-purple-500 to-pink-500',
       shadowColor: 'shadow-purple-500/20'
@@ -31,8 +31,8 @@ export default function Home() {
   ];
 
   const gamemodes = [
-    'Dia SMP', 'Neth SMP', 'Ely Mace', 'Mace', 'Sword', 'Axe',
-    'Dia Pot', 'Neth Pot', 'Cart', 'Lifesteal', 'UHC'
+    'Vanilla', 'Dia SMP', 'Neth SMP', 'Ely Mace', 'Mace', 'Sword', 'Axe',
+    'Dia Pot', 'Neth Pot', 'Cart', 'Spear Mace', 'UHC'
   ];
 
   return (
@@ -64,7 +64,7 @@ export default function Home() {
             </h1>
 
             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-              Track your rankings, earn tiers, and compete with the best Minecraft PvP players across 11 different gamemodes.
+              Track your rankings, earn tiers, and compete with the best Minecraft PvP players across 12 different gamemodes.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -118,7 +118,7 @@ export default function Home() {
       <section className="py-20 px-4 bg-slate-800/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">11 Competitive Gamemodes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">12 Competitive Gamemodes</h2>
             <p className="text-slate-400 max-w-xl mx-auto">Each gamemode has its own unique ranking system and tier progression</p>
           </div>
           

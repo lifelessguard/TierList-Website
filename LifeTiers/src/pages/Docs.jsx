@@ -88,7 +88,7 @@ export default function Docs() {
 
                   <div className="grid sm:grid-cols-2 gap-4 mt-8">
                     <div className="bg-slate-900/50 rounded-lg p-4 text-center">
-                      <p className="text-3xl font-bold text-emerald-400">11</p>
+                      <p className="text-3xl font-bold text-emerald-400">12</p>
                       <p className="text-sm text-slate-400">Gamemodes</p>
                     </div>
                     <div className="bg-slate-900/50 rounded-lg p-4 text-center">

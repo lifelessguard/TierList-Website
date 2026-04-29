@@ -1,9 +1,3 @@
-import { base44 } from './base44Client';
+import { Player, Admin, SiteSettings, supabase } from './supabaseClient';
 
-
-export const Query = base44.entities.Query;
-
-
-
-// auth sdk:
-export const User = base44.auth;
+export { Player, Admin, SiteSettings, supabase };

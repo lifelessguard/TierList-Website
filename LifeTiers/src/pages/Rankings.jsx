@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import { Player } from '@/api/supabaseClient';
 import Leaderboard from '../components/leaderboard/Leaderboard';
 import GamemodeTabs from '../components/leaderboard/GamemodeTabs';
 import ServerInfo from '../components/sidebar/ServerInfo';
@@ -11,7 +11,7 @@ export default function Rankings() {
 
   const { data: players, isLoading } = useQuery({
     queryKey: ['players'],
-    queryFn: () => base44.entities.Player.list(),
+    queryFn: () => Player.list(),
     initialData: [],
   });
 
