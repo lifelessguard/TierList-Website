@@ -6,6 +6,20 @@ const TIER_POINTS_MAP = {
   HT3: 10, LT3: 6, HT4: 4, LT4: 3, HT5: 2, LT5: 1,
 };
 
+const GAMEMODE_NAMES = {
+  vanilla: 'Vanilla',
+  cart: 'Cart',
+  uhc: 'UHC',
+  dia_pot: 'Dia Pot',
+  neth_pot: 'Neth Pot',
+  sword: 'Sword',
+  axe: 'Axe',
+  dia_smp: 'Dia SMP',
+  neth_smp: 'SMP',
+  mace: 'Mace',
+  spear_mace: 'Spear Mace',
+};
+
 const TIER_COLORS = {
   HT1: '#f59e0b', LT1: '#f97316',
   HT2: '#eab308', LT2: '#facc15',
@@ -160,7 +174,7 @@ export default function TierIcon({ tier, gamemode, size = 'sm', showPill = false
         <TooltipContent side="top" className="bg-[#161924] border-[#2a2d3a] text-white px-3 py-2">
           <div className="text-center">
             <p className="font-bold text-sm" style={{ color: pillColors?.ring || '#8b8fa8' }}>{tier}</p>
-            {gamemode && <p className="text-xs capitalize" style={{ color: '#8b8fa8' }}>{gamemode.replace(/_/g, ' ')}</p>}
+            {gamemode && <p className="text-xs" style={{ color: '#8b8fa8' }}>{GAMEMODE_NAMES[gamemode] || gamemode.replace(/_/g, ' ')}</p>}
             <p className="font-semibold mt-1" style={{ color: '#f59e0b' }}>{getTierPoints(tier)} points</p>
           </div>
         </TooltipContent>
