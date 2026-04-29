@@ -20,7 +20,6 @@ const GAMEMODES = [
   { id: 'neth_smp', name: 'SMP', icon: 'https://media.base44.com/images/public/69c6b9c596f69bd520924ef9/9c7b83259_smp.png' },
   { id: 'mace', name: 'Mace', icon: 'https://mctiers.com/tier_icons/mace.svg' },
   { id: 'spear_mace', name: 'Spear Mace', icon: 'https://media.base44.com/images/public/69c694fceabd90a23b1873c9/b6e3289ce_Untitled4x.png' },
-  { id: 'ely_spear', name: 'Ely Mace', icon: 'https://media.base44.com/images/public/69c694fceabd90a23b1873c9/691405e51_image.png' },
 ];
 
 const TIERS = ['HT1', 'LT1', 'HT2', 'LT2', 'HT3', 'LT3', 'HT4', 'LT4', 'HT5', 'LT5'];

@@ -172,6 +172,9 @@ function PlayersManager() {
       queryClient.invalidateQueries({ queryKey: ['players'] });
       toast.success('Player deleted');
     },
+    onError: (error) => {
+      toast.error(`Failed to delete player: ${error.message}`);
+    },
   });
 
   const createMutation = useMutation({
@@ -180,6 +183,9 @@ function PlayersManager() {
       queryClient.invalidateQueries({ queryKey: ['players'] });
       setIsDialogOpen(false);
       toast.success('Player created');
+    },
+    onError: (error) => {
+      toast.error(`Failed to create player: ${error.message}`);
     },
   });
 
@@ -190,6 +196,9 @@ function PlayersManager() {
       setIsDialogOpen(false);
       setEditingPlayer(null);
       toast.success('Player updated');
+    },
+    onError: (error) => {
+      toast.error(`Failed to update player: ${error.message}`);
     },
   });
 
@@ -402,6 +411,9 @@ function DiscordSettingsManager() {
       queryClient.invalidateQueries({ queryKey: ['site_settings'] });
       toast.success('Discord settings saved!');
     },
+    onError: (error) => {
+      toast.error(`Failed to save Discord settings: ${error.message}`);
+    },
   });
 
   if (isLoading) return <p className="text-slate-400">Loading...</p>;
@@ -497,6 +509,9 @@ function SiteSettingsManager() {
       queryClient.invalidateQueries({ queryKey: ['site_settings'] });
       toast.success('Site settings saved!');
     },
+    onError: (error) => {
+      toast.error(`Failed to save site settings: ${error.message}`);
+    },
   });
 
   const handleSubmit = (e) => {
@@ -574,6 +589,9 @@ function AdminsManager({ currentAdmin }) {
       setNewAdmin({ username: '', password: '' });
       toast.success('Admin created');
     },
+    onError: (error) => {
+      toast.error(`Failed to create admin: ${error.message}`);
+    },
   });
 
   const deleteMutation = useMutation({
@@ -581,6 +599,9 @@ function AdminsManager({ currentAdmin }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admins'] });
       toast.success('Admin deleted');
+    },
+    onError: (error) => {
+      toast.error(`Failed to delete admin: ${error.message}`);
     },
   });
 
