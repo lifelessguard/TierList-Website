@@ -1,0 +1,37 @@
+{
+  "name": "Player",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "description": "Minecraft username"
+    },
+    "avatar_url": {
+      "type": "string",
+      "description": "URL to player's Minecraft head avatar"
+    },
+    "region": {
+      "type": "string",
+      "enum": [
+        "EU",
+        "NA",
+        "AS",
+        "OCE",
+        "SA"
+      ],
+      "description": "Player's region"
+    },
+    "rank_title": {
+      "type": "string",
+      "description": "Player's rank title e.g. Combat Master"
+    },
+    "tiers": {
+      "type": "object",
+      "description": "Object mapping gamemode to tier (e.g., {dia_smp: 'HT3', neth_smp: 'LT4'})"
+    }
+  },
+  "required": [
+    "username",
+    "region"
+  ]
+}

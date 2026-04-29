@@ -1,0 +1,31 @@
+{
+  "name": "SiteSettings",
+  "type": "object",
+  "properties": {
+    "discord_link": {
+      "type": "string",
+      "description": "Primary Discord server invite link"
+    },
+    "discord_links": {
+      "type": "string",
+      "description": "JSON array of discord links [{name, url}]"
+    },
+    "discord_icon": {
+      "type": "string",
+      "description": "Custom icon URL for Discord section (defaults to LifeTiers logo)"
+    },
+    "realm_code": {
+      "type": "string",
+      "description": "Minecraft Realm join code"
+    },
+    "server_name": {
+      "type": "string",
+      "description": "Display name of the server"
+    },
+    "server_tagline": {
+      "type": "string",
+      "description": "Short tagline shown under server name"
+    }
+  },
+  "required": []
+}
