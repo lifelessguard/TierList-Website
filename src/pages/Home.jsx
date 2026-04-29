@@ -31,7 +31,7 @@ export default function Home() {
   ];
 
   const gamemodes = [
-    'Vanilla', 'Dia SMP', 'Neth SMP', 'Ely Mace', 'Mace', 'Sword', 'Axe',
+    'Vanilla', 'Dia SMP', 'SMP', 'Mace', 'Sword', 'Axe',
     'Dia Pot', 'Neth Pot', 'Cart', 'Spear Mace', 'UHC'
   ];
 

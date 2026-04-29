@@ -24,7 +24,7 @@ import TierSelector from '../components/admin/TierSelector';
 
 const GAMEMODES = [
   'vanilla', 'cart', 'uhc', 'dia_pot', 'neth_pot',
-  'sword', 'axe', 'dia_smp', 'neth_smp', 'mace', 'spear_mace', 'ely_spear'
+  'sword', 'axe', 'dia_smp', 'neth_smp', 'mace', 'spear_mace'
 ];
 
 const TIERS = ['HT1', 'LT1', 'HT2', 'LT2', 'HT3', 'LT3', 'HT4', 'LT4', 'HT5', 'LT5'];
