@@ -220,12 +220,24 @@ function PlayersManager() {
             <PlayerForm
               player={editingPlayer}
               onSubmit={(data) => {
-                if (editingPlayer) {
-                  updateMutation.mutate({ id: editingPlayer.id, data });
-                } else {
-                  createMutation.mutate(data);
-                }
-              }}
+  // Check each kit where this player has HT1
+  const ht1Kits = Object.entries(data.tiers || {}).filter(([, t]) => t === 'HT1' || t === 'RHT1');
+  for (const [kit, tier] of ht1Kits) {
+    const conflict = players.find(p =>
+      p.id !== (editingPlayer?.id) &&
+      p.tiers?.[kit] === tier
+    );
+    if (conflict) {
+      toast.error(`${conflict.username} already has ${tier} in ${kit}. Only one player can hold ${tier} per kit.`);
+      return;
+    }
+  }
+  if (editingPlayer) {
+    updateMutation.mutate({ id: editingPlayer.id, data });
+  } else {
+    createMutation.mutate(data);
+  }
+}}
               onCancel={() => {
                 setIsDialogOpen(false);
                 setEditingPlayer(null);
