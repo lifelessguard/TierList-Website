@@ -315,14 +315,24 @@ function PlayerForm({ player, onSubmit, onCancel }) {
   });
 
   const handleTierChange = (gamemode, tier) => {
-    setFormData(prev => ({
-      ...prev,
-      tiers: {
-        ...prev.tiers,
-        [gamemode]: tier === 'none' ? undefined : tier
-      }
-    }));
-  };
+  if (tier !== 'none') {
+    // Check if this tier is already assigned to a different gamemode for this player
+    const conflict = Object.entries(formData.tiers).find(
+      ([gm, t]) => gm !== gamemode && t === tier
+    );
+    if (conflict) {
+      alert(`${tier} is already assigned to ${conflict[0]}. Remove it there first.`);
+      return;
+    }
+  }
+  setFormData(prev => ({
+    ...prev,
+    tiers: {
+      ...prev.tiers,
+      [gamemode]: tier === 'none' ? undefined : tier
+    }
+  }));
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
