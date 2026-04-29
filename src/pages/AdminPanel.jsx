@@ -315,13 +315,12 @@ function PlayerForm({ player, onSubmit, onCancel }) {
   });
 
   const handleTierChange = (gamemode, tier) => {
-  if (tier !== 'none') {
-    // Check if this tier is already assigned to a different gamemode for this player
+  if (tier !== 'none' && (tier === 'HT1' || tier === 'RHT1')) {
     const conflict = Object.entries(formData.tiers).find(
       ([gm, t]) => gm !== gamemode && t === tier
     );
     if (conflict) {
-      alert(`${tier} is already assigned to ${conflict[0]}. Remove it there first.`);
+      alert(`${tier} can only be assigned to one kit. Remove it from ${conflict[0]} first.`);
       return;
     }
   }
